@@ -4,16 +4,16 @@ using RaceDay_Part_3_MVC.Models;
 using RaceDay_Part_3_MVC.Services;
 
 namespace RaceDay_Part_3_MVC.Controllers
-{
+{//start of namespace 
     [SessionAuthorize]
     public class ParticipantController : Controller
-    {
+    {//start of class 
         private readonly ApiService _apiService;
 
         public ParticipantController(ApiService apiService)
-        {
+        {//start of constructor 
             _apiService = apiService;
-        }
+        }//end of constructor 
 
         // GET: /Participant/Dashboard
         public IActionResult Dashboard()
@@ -37,18 +37,18 @@ namespace RaceDay_Part_3_MVC.Controllers
         // POST: /Participant/Enrol/1
         [HttpPost]
         public IActionResult Enrol(int eventId, int categoryId)
-        {
+        {//start of method 
             if (HttpContext.Session.GetString("UserRole") != "participant")
                 return RedirectToAction("Index", "Events");
 
             // In reality: call API to POST api/registrations
             TempData["Success"] = "Successfully enrolled in the event!";
             return RedirectToAction("Dashboard");
-        }
+        }//end of method 
 
         // GET: /Participant/MyResults
         public IActionResult MyResults()
-        {
+        {//start of method 
             if (HttpContext.Session.GetString("UserRole") != "participant")
                 return RedirectToAction("Index", "Events");
 
@@ -59,11 +59,11 @@ namespace RaceDay_Part_3_MVC.Controllers
             };
 
             return View(results);
-        }
+        }//end of method 
 
         // GET: /Participant/Profile
         public IActionResult Profile()
-        {
+        {//start of method 
             if (HttpContext.Session.GetString("UserRole") != "participant")
                 return RedirectToAction("Index", "Events");
 
@@ -75,15 +75,15 @@ namespace RaceDay_Part_3_MVC.Controllers
             };
 
             return View(profile);
-        }
+        }//start of method 
 
         // POST: /Participant/Profile
         [HttpPost]
         public IActionResult Profile(ProfileViewModel model)
-        {
+        {//start of method 
             // In reality: call API to update profile
             TempData["Success"] = "Profile updated successfully!";
             return RedirectToAction("Profile");
-        }
-    }
-}
+        }//end of method 
+    }//end of class
+}//end of namespace 

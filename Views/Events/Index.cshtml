@@ -1,0 +1,44 @@
+﻿@model List<RaceDay_Part_3_MVC.Models.EventListViewModel>
+
+<div class="d-flex justify-content-between align-items-center mt-4 mb-3">
+    <h2>Upcoming Events</h2>
+    @if (Context.Session.GetString("UserRole") == "organiser")
+    {
+        <a asp-action="Create" class="btn btn-primary">Create New Event</a>
+    }
+</div>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-warning">@ViewBag.Error</div>
+}
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">No events found.</div>
+}
+else
+{
+    <div class="row">
+        @foreach (var ev in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">@ev.event_title</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">@ev.event_location</h6>
+                        <p class="card-text">
+                            <strong>Date:</strong> @ev.event_date.ToString("dd MMM yyyy") <br />
+                            <strong>Status:</strong> <span class="badge bg-info text-dark">@ev.status</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

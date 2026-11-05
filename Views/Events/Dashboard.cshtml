@@ -1,0 +1,55 @@
+﻿@model RaceDay_Part_3_MVC.Models.OrganiserDashboardViewModel
+
+<h2 class="mt-4">Welcome, @Model.OrganiserName</h2>
+
+<div class="row mt-4 mb-4">
+    <div class="col-md-6">
+        <div class="card bg-primary text-white text-center p-4 shadow-sm">
+            <h3>@Model.TotalEvents</h3>
+            <p class="mb-0">Total Events Created</p>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card bg-success text-white text-center p-4 shadow-sm">
+            <h3>@Model.TotalEnrolments</h3>
+            <p class="mb-0">Total Enrolments</p>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h4>My Events</h4>
+    <a asp-action="Create" class="btn btn-primary">Create New Event</a>
+</div>
+
+<table class="table table-striped table-hover shadow-sm">
+    <thead class="table-dark">
+        <tr>
+            <th>Event Name</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Enrolments</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ev in Model.Events)
+        {
+            <tr>
+                <td>@ev.event_title</td>
+                <td>@ev.event_date.ToString("dd MMM yyyy")</td>
+                <td><span class="badge bg-info text-dark">@ev.status</span></td>
+                <td>@ev.enrolment_count</td>
+                <td>
+                    <a asp-action="Enrolments" asp-route-id="@ev.event_id" class="btn btn-sm btn-outline-primary">View Enrolments</a>
+                    <a asp-action="EnterResults" asp-route-id="@ev.event_id" class="btn btn-sm btn-outline-success">Enter Results</a>
+                </td>
+            </tr>
+           
+            @if (!string.IsNullOrEmpty(ev.banner_image_url))
+            {
+                <img src="@ev.banner_image_url" class="img-fluid rounded-top" style="height: 150px; object-fit: cover;" alt="Event Banner" />
+            }
+        }
+    </tbody>
+</table>

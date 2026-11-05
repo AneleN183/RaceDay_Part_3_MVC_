@@ -1,0 +1,70 @@
+﻿@model RaceDay_Part_3_MVC.Models.RegisterRequest
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+                <h2 class="text-center mb-4" style="color: #0d6efd; font-weight: 800;">Join RaceDay</h2>
+
+                @if (ViewBag.Error != null)
+                {
+                    <div class="alert alert-danger">@ViewBag.Error</div>
+                }
+
+                <form asp-action="Register" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label font-weight-bold">First Name</label>
+                            <input asp-for="first_name" class="form-control" required />
+                            <span asp-validation-for="first_name" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label font-weight-bold">Last Name</label>
+                            <input asp-for="last_name" class="form-control" required />
+                            <span asp-validation-for="last_name" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label font-weight-bold">Email Address</label>
+                        <input asp-for="email" class="form-control" type="email" required />
+                        <span asp-validation-for="email" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label font-weight-bold">Password</label>
+                        <input asp-for="password" class="form-control" type="password" required />
+                        <span asp-validation-for="password" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label font-weight-bold">I am registering as a...</label>
+                        <select asp-for="user_role" class="form-select">
+                            <option value="participant">Participant (I want to run/cycle)</option>
+                            <option value="organiser">Organiser (I want to create events)</option>
+                        </select>
+                        <span asp-validation-for="user_role" class="text-danger"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-success w-100 py-2" style="font-weight: 600;">Create Account</button>
+                </form>
+
+                <div class="text-center mt-3">
+                    <small>Already have an account? <a asp-action="Login">Login here</a></small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

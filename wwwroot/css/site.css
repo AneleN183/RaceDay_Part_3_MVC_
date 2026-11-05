@@ -1,0 +1,50 @@
+/* RaceDay Theme */
+:root {
+    --raceday-blue: #0d6efd;
+    --raceday-orange: #fd7e14;
+}
+
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+.navbar-brand {
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--raceday-blue) !important;
+    letter-spacing: 1px;
+}
+
+/* Cards for Events */
+.card {
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,.1) !important;
+    }
+
+/* Enrolment Status Colors (Requirement 7) */
+.badge-confirmed {
+    background-color: #198754; /* Green */
+    color: white;
+}
+
+.badge-pending {
+    background-color: #ffc107; /* Amber */
+    color: black;
+}
+
+.badge-cancelled {
+    background-color: #dc3545; /* Red */
+    color: white;
+}

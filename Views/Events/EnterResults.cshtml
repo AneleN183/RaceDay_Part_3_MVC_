@@ -1,0 +1,31 @@
+﻿@model List<RaceDay_Part_3_MVC.Models.ResultEntryViewModel>
+
+<div class="d-flex justify-content-between align-items-center mt-4 mb-3">
+    <h2>Enter Results: @ViewBag.EventTitle</h2>
+    <a asp-action="Dashboard" class="btn btn-secondary">Back to Dashboard</a>
+</div>
+
+<form asp-action="SaveResults" method="post">
+    <table class="table table-bordered shadow-sm">
+        <thead>
+            <tr>
+                <th>Participant</th>
+                <th>Finish Time (hh:mm:ss)</th>
+                <th>Overall Rank</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <input type="hidden" asp-for="@Model[i].registration_id" />
+                <input type="hidden" asp-for="@Model[i].participant_name" />
+                <tr>
+                    <td>@Model[i].participant_name</td>
+                    <td><input asp-for="@Model[i].finish_time" class="form-control" placeholder="e.g. 05:30:00" /></td>
+                    <td><input asp-for="@Model[i].overall_rank" class="form-control" type="number" /></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <button type="submit" class="btn btn-success">Publish Results</button>
+</form>

@@ -1,22 +1,27 @@
-# Use the official ASP.NET Core runtime as a base image
+# 1. Use the official ASP.NET Core runtime as a base image for production
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
 EXPOSE 8080
 EXPOSE 8081
 
-# Use the SDK image to build the app
+# 2. Use the SDK image to build and publish the app
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
+
+# Copy the project file and restore dependencies
 COPY ["RaceDay_Part_3_MVC.csproj", "./"]
 RUN dotnet restore "RaceDay_Part_3_MVC.csproj"
+
+# Copy everything else and build
 COPY . .
 WORKDIR "/src/."
 RUN dotnet build "RaceDay_Part_3_MVC.csproj" -c Release -o /app/build
 
+# 3. Publish the app
 FROM build AS publish
 RUN dotnet publish "RaceDay_Part_3_MVC.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
-# Final stage/image
+# 4. Final stage: copy the published files to the runtime image
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .

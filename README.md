@@ -18,7 +18,7 @@ When you click the register button at the top, this is what you'll see
 
 Now remember what I said above? I said I implemented a service layer mocking strategy that allows you to login, browse events and see distinct organizer and participant interfaces exactly as they would behave with a LIVE API. So, because I used a mock strategy, I need mock data right? So here's the mock data for you to use to also test out the roles in the application. 
 
-Follow these steps✨
+FOLLOW THESE STEPS✨
 1. Click the Login button
 2. Type admin@org.com and a password
 3. Okay you're in,  and then click Organizer Dashboard
@@ -28,5 +28,13 @@ Follow these steps✨
 6. Then enter user@test.com and a password
 7. See, now you can see My Profile, My Enrolments and My Results, so it works!
    <img width="1591" height="898" alt="image" src="https://github.com/user-attachments/assets/ad7da428-6289-4ca5-8391-0be15bc6ec80" />
+
+DOCKERISATION
+The application includes a multi-stage 'Dockerfile' that's designed to follow best practices for containerizing ASP.NET Core applications. The multi-stage build ensures that the final production image remains lightweight and secure by using the ASP.NET runtime image rather than the heavier SDK image. 
+
+To run the application inside a Docker container, use the following command from the root directory of the project. 
+```bash
+docker build -t raceday-mvc .
+docker run -d -p 8080:8080 -e API_BASE_URL="http://host.docker.internal:7122/" --name raceday-app raceday-mvc 
 
 

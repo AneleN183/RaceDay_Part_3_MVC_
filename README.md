@@ -1,5 +1,5 @@
 ✨RaceDay - Part 3 - MVC web application✨
-
+YouTube video link - https://youtu.be/R1jKYO_54-w 
 Good morning/evening.
 This README us for my Part 3 assignment for PROG6212. We have been asked to create a full stack even management system that's designed for the South African road running, walking and cycling community. 
 This project is a complete ASP.NET Core MVC web application that serves as the front end for the RaceDay platform. It strictly consumes the RESTful API built in Part 2 and provides distinct, role-based interfaces for organizers and participants. 

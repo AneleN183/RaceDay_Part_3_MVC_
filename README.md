@@ -1,7 +1,7 @@
 ✨RaceDay - Part 3 - MVC web application✨
 YouTube video link - https://youtu.be/R1jKYO_54-w 
 Good morning/evening.
-This README us for my Part 3 assignment for PROG6212. We have been asked to create a full stack even management system that's designed for the South African road running, walking and cycling community. 
+This README is for my Part 3 assignment for PROG6212, that's due on the 9th of November 2026. We have been asked to create a full stack even management system that's designed for the South African road running, walking and cycling community. 
 This project is a complete ASP.NET Core MVC web application that serves as the front end for the RaceDay platform. It strictly consumes the RESTful API built in Part 2 and provides distinct, role-based interfaces for organizers and participants. 
 
 ⚠️DISCLAIMER⚠️
@@ -20,13 +20,13 @@ Now remember what I said above? I said I implemented a service layer mocking str
 
 FOLLOW THESE STEPS✨
 1. Click the Login button
-2. Type admin@org.com and a password
-3. Okay you're in,  and then click Organizer Dashboard
+2. Type admin@org.com and a password of your choosing 
+3. Okay you're in,  and then click Organizer Dashboard, see??
 4. <img width="1599" height="899" alt="image" src="https://github.com/user-attachments/assets/a383be6d-6f2f-43e1-bc26-a879a6bf995d" />
 
-5. Now, click Logout
-6. Then enter user@test.com and a password
-7. See, now you can see My Profile, My Enrolments and My Results, so it works!
+5. Now, click the Logout button 
+6. Then enter user@test.com and a password of your choosing 
+7. See, now you can see My Profile, My Enrolments and My Results, so it works very well!
    <img width="1591" height="898" alt="image" src="https://github.com/user-attachments/assets/ad7da428-6289-4ca5-8391-0be15bc6ec80" />
 
 DOCKERISATION
